@@ -1,3 +1,2 @@
-# minesweeper
-
-A new Flutter project.
+# Minesweeper
+CSE 3150 Group Project
