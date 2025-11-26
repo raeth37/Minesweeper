@@ -1,0 +1,3 @@
+C:/Users/kejdi/Downloads/Minesweeper/build/CMakeFiles/minesweeper.dir
+C:/Users/kejdi/Downloads/Minesweeper/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/kejdi/Downloads/Minesweeper/build/CMakeFiles/ZERO_CHECK.dir
