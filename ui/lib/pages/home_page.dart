@@ -1,13 +1,27 @@
 import 'dart:io';
-import 'package:minesweeper/components/button.dart';
-import 'package:minesweeper/components/navigator.dart';
-import 'package:minesweeper/pages/game_page.dart';
-import 'package:minesweeper/pages/rules_page.dart';
-import 'package:minesweeper/pages/settings_page.dart';
+import 'package:minesweeper/components/glass_button.dart';
+
+import '../components/button.dart';
+import '../components/navigator.dart';
+import 'game_page.dart';
+import 'rules_page.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget{
+class HomePage extends StatefulWidget{
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePage();
+}
+
+class _HomePage extends State<HomePage>{
+  
+  // ignore: unused_field
+  String _difficulty = 'normal';
+
+  void _selectDifficulty(String diff) {
+    _difficulty = diff;
+  }
 
   Future<void> _closeApp(BuildContext context) async{
     return showDialog(
@@ -49,81 +63,85 @@ class HomePage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      backgroundColor: Color.fromRGBO(76, 96, 87, 1),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: [
-                const SizedBox(height: 10),
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('lib/assets/images/background.png'),
+          fit: BoxFit.fill
+        ),
+      ),
 
-                Text(
-                  'MINESWEEPER',
-                  style: const TextStyle(
-                    fontFamily: 'Audiowide',
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 120,
-                    letterSpacing: 0.5,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children: [
+                  const SizedBox(height: 250),
+
+                  /*
+                  Text(
+                    'MINESWEEPER',
+                    style: const TextStyle(
+                      fontFamily: 'Audiowide',
+                      color: Color(0xfff2e8cf),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 125,
+                      letterSpacing: 0.6,
+                    ),
                   ),
-                ),
-          
-                const SizedBox(height: 25),
-          
-                Container(
-                  height: 450,
-                  width: 800,
-                  padding: const EdgeInsets.all(40),
-                  decoration: BoxDecoration(
-                    color: Colors.grey, 
-                    borderRadius: BorderRadius.circular(20), 
+                  */
+
+                  Container(
+                    height: 500,
+                    width: 900,
+                    padding: const EdgeInsets.all(40),
+                    decoration: BoxDecoration(
+                      color: Colors.transparent, 
+                      borderRadius: BorderRadius.circular(20), 
+                      
+                    ),
                     
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        
+                        Column(
+                          children: [
+                            const SizedBox(height: 65),
+                            GlassButton(
+                              text: 'START',
+                              onTap: () => navigator(context, GamePage()),
+                            ),
+                            const SizedBox(height: 30),
+            
+                            GlassButton(
+                              text: 'RULES',
+                              onTap: () => navigator(context, RulesPage()),
+                            ),
+                            const SizedBox(height: 30),
+                            
+                            GlassButton(
+                              text: 'QUIT',
+                              onTap: () => _closeApp(context)
+                            ),
+                          ],
+                        ),
+            
+                      ],
+                
+                    ),
+                  
                   ),
                   
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      
-                      Column(
-                        children: [
-                          button(context, 'START', () => navigator(context, GamePage())),
-                          const SizedBox(height: 30),
-          
-                          button(context, 'SETTINGS', () => navigator(context, SettingsPage())),
-                          const SizedBox(height: 30),
-          
-                          button(context, 'RULES', () => navigator(context, RulesPage())),
-                          const SizedBox(height: 30),
-          
-                          button(context, 'QUIT', () => _closeApp(context)),
-                        ],
-                      ),
-          
-                      const SizedBox(width: 60),
-          
-                      Container(
-                        height: 392,
-                        width: 362,
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.white, 
-                          borderRadius: BorderRadius.circular(20), 
-                          
-                        ),
-                      ),
-                    ],
-              
-                  ),
-                 
-                ),
-                
-              ],
+                ],
+              ),
             ),
           ),
-        ),
 
+        ),
       ),
     );
   }

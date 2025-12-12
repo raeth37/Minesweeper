@@ -11,10 +11,12 @@ dependencies:
     sdk: flutter
 
   window_manager: ^0.5.1
+  cpp_flutter_ffi: ^0.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   flutter_lints: ^5.0.0
 
 flutter:
@@ -23,4 +25,7 @@ flutter:
     - family: Audiowide
       fonts:
         - asset: lib/assets/fonts/Audiowide/Audiowide-Regular.ttf
+  
+  assets:
+    - lib/assets/images/background.png
 

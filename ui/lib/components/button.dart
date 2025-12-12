@@ -9,7 +9,7 @@ SizedBox button(BuildContext context, String text, VoidCallback onPressed) {
       onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all(
-          const Color.fromARGB(255, 215, 207, 207),
+          const Color.fromARGB(255, 255, 249, 235),
         ),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
@@ -21,8 +21,8 @@ SizedBox button(BuildContext context, String text, VoidCallback onPressed) {
       child: Text(
         text,
         style: const TextStyle(
-          fontSize: 40,
-          color: Colors.white,
+          fontSize: 36,
+          color: Color(0xff386641),
           fontWeight: FontWeight.w700,
         ),
       ),
